@@ -1,0 +1,53 @@
+package programmingClub;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class GGGCode {
+
+	public static void main(String[] args) {
+
+		// Create Scanner object and ArrayLists to store the code
+		Scanner sc = new Scanner(System.in);
+		ArrayList<String> letters = new ArrayList<>();
+		ArrayList<String> code = new ArrayList<>();
+		
+		// Get the key
+		String key = sc.nextLine();
+		
+		// Break key into letters and codes (with corresponding indices)
+		for(int i = 0; i < key.length(); i+=6) {
+			letters.add(key.substring(i, i+1));
+			code.add(key.substring(i+2, i+5));
+		}
+		
+		// Get encrypted message, create flexible punctuation String, create output String
+		String message = sc.nextLine();
+		String punc = " ,.!?:";
+		String output = "";
+		
+		// Break down the encrypted message
+		for(int i = 0; i < message.length(); i+=3) {
+			
+			// Checks if there is punctuation in the first character, adds punctuation to output, and checks next character
+			String precomp = message.substring(i, i+1);
+			if(punc.contains(precomp)) {
+				output += precomp;
+				i-=2;
+				continue;
+			}
+			
+			// If there is no punctuation, break message into groups of three, check with code array, get corresponding letter
+			String compare = message.substring(i, i+3);
+			for(int j = 0; j < code.size(); j++) {
+				if(code.get(j).equals(compare)) {
+					output += letters.get(j);
+				}
+			}
+		}
+		
+		// Print output
+		System.out.println(output);
+	}
+
+}
