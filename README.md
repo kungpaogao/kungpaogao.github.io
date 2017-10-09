@@ -4,7 +4,7 @@ Currently, my [website](http://kungpaogao.github.io/ "My Website") has \[basical
 ## Features
 - a challenge
 - some pirates
-- a resume (outdated)
+- a resume
 - an about me page
 - my (old) Blender config files
 - other random stuff
